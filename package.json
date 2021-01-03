@@ -1,72 +1,81 @@
 {
-	"license": "MIT",
-	"name": "conan",
-	"displayName": "conan",
-	"description": "Conan C/C++ package manager integration for VS-Code",
-	"version": "0.6.1",
-	"publisher": "disroop",
-	"icon": "images/disroop-icon.png",
-	"preview": true,
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/disroop/vs-code-conan.git"
-	},
-	"engines": {
-		"vscode": "^1.48.2"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"workspaceContains:**/conanfile.py",
-		"workspaceContains:**/.vscode/conan-settings.json"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "vs-code-conan.profilePick",
-				"title": "Conan: Pick profile "
-			},
-			{
-				"command": "vs-code-conan.install",
-				"title": "Conan: Install packages"
-			},
-			{
-				"command": "vs-code-conan.build",
-				"title": "Conan: Build"
-			},
-			{
-				"command": "vs-code-conan.create",
-				"title": "Conan: Create package"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^7.0.2",
-		"@types/node": "^13.11.0",
-		"@types/vscode": "^1.46.0",
-		"@typescript-eslint/eslint-plugin": "^2.30.0",
-		"@typescript-eslint/parser": "^2.30.0",
-		"eslint": "^6.8.0",
-		"eslint-config-prettier": "^6.15.0",
-		"glob": "^7.1.6",
-		"mocha": "^7.1.2",
-		"prettier": "2.2.1",
-		"typescript": "^3.8.3",
-		"vscode-test": "^1.3.0"
-	},
-	"dependencies": {
-		"queue-typescript": "^1.0.1",
-		"vsce": "^1.77.0"
-	}
+  "license": "MIT",
+  "name": "conan",
+  "displayName": "conan",
+  "description": "Conan C/C++ package manager integration for VS-Code",
+  "version": "0.6.1",
+  "publisher": "disroop",
+  "icon": "images/disroop-icon.png",
+  "preview": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/disroop/vs-code-conan.git"
+  },
+  "engines": {
+    "vscode": "^1.48.2"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/conanfile.py",
+    "workspaceContains:**/.vscode/conan-settings.json",
+    "onView:conanView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "conanView",
+          "name": "Conan"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vs-code-conan.profilePick",
+        "title": "Conan: Pick profile "
+      },
+      {
+        "command": "vs-code-conan.install",
+        "title": "Conan: Install packages"
+      },
+      {
+        "command": "vs-code-conan.build",
+        "title": "Conan: Build"
+      },
+      {
+        "command": "vs-code-conan.create",
+        "title": "Conan: Create package"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.11.0",
+    "@types/vscode": "^1.46.0",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.15.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.1.2",
+    "prettier": "2.2.1",
+    "typescript": "^3.8.3",
+    "vscode-test": "^1.3.0"
+  },
+  "dependencies": {
+    "queue-typescript": "^1.0.1",
+    "vsce": "^1.77.0"
+  }
 }

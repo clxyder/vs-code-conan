@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import {Configurator} from './configurator/configurator';
 import {CommandController} from "./commands/control";
 import {CommandView} from "./commands/view";
+import {ConanDataProvider} from './dmtp/ConanDataProvider';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -9,6 +10,9 @@ export function activate(context: vscode.ExtensionContext) {
     let barItems;
     const rootPath: string | undefined = vscode.workspace.rootPath;
     const settingsFile: string = rootPath+'/.vscode/conan-settings.json';
+
+    vscode.window.registerTreeDataProvider('conanView', new ConanDataProvider());
+
 
     function setupConanSettingsFileWatcher() {
         const folder = vscode.workspace.workspaceFolders?.[0];
